@@ -7,7 +7,7 @@
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:p="http://primefaces.org/ui">
     <h:head>
-        <title>Registro Enfermedad</title> 
+        <title>Vendedor</title> 
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="Shortcut Icon" type="image/x-icon" href="../resources/assets/icons/book.ico" />
@@ -135,8 +135,8 @@
                 <div class="row">
                     <div class="col-xs-12 lead">
                         <ol class="breadcrumb">
-                            <li class="active">Ingreso Camisola</li>
-                            <li><a href="modificar/ModificarCamisola.xhtml">Listado de Examenes</a></li>
+                            <li class="active">Ingreso Vendedor</li>
+                            <li><a href="modificar/ModificarVendedor.xhtml">Listado de Vendedores</a></li>
                         </ol>
                     </div>
                 </div>
@@ -146,7 +146,7 @@
 
             <div  class="container-fluid">
                 <div class="container-flat-form">
-                    <div class="title-flat-form title-flat-blue">Registrar un nuevo Examen</div>
+                    <div class="title-flat-form title-flat-blue">Registrar un nuevo Vendedor</div>
                     <form autocomplete="off">
                         <div class="row">
                             <div class="col-xs-12 col-sm-8 col-sm-offset-2">
@@ -156,51 +156,29 @@
                                 <h:form>
 
                                     <div class="group-material">
-                                        <b:inputText id="nombre" style="font: bold small-caps 120%/200% serif;" placeholder="Nombre" value="#{camisolaBean.camisola.nombreProducto}"  />
+                                        <b:inputText id="nombre" style="font: bold small-caps 120%/200% serif;" placeholder="Nombre" value="#{beanVendedor.ingreso.nombres}" />
+                                    </div>
+                                    
+                                    <div class="group-material">
+                                        <b:inputText id="talla" style="font: bold small-caps 120%/200% serif;" placeholder="Apellido" value="#{beanVendedor.ingreso.apellido}"  />
                                     </div>
 
                                     <div class="group-material">
-                                        <b:inputText id="talla" style="font: bold small-caps 120%/200% serif;" placeholder="Talla" value="#{camisolaBean.camisola.id_talla_camisola}"  />
+                                        <b:inputText id="precioVenta" style="font: bold small-caps 120%/200% serif;" placeholder="DPI" value="#{beanVendedor.ingreso.dui}"  />
                                     </div>
 
                                     <div class="group-material">
-                                        <b:inputText id="precioVenta" style="font: bold small-caps 120%/200% serif;" placeholder="precio venta" value="#{camisolaBean.camisola.precioVenta}"  />
+                                        <b:inputText id="precioCosto" style="font: bold small-caps 120%/200% serif;" placeholder="Celular" value="#{beanVendedor.ingreso.celular}"  />
                                     </div>
 
                                     <div class="group-material">
-                                        <b:inputText id="precioCosto" style="font: bold small-caps 120%/200% serif;" placeholder="Nombre" value="#{camisolaBean.camisola.precioCosto}"  />
+                                        <b:inputText id="margen" style="font: bold small-caps 120%/200% serif;" placeholder="Dirección" value="#{beanVendedor.ingreso.direccion}"  />
                                     </div>
 
-                                    <div class="group-material">
-                                        <b:inputText id="margen" style="font: bold small-caps 120%/200% serif;" placeholder="Nombre" value="#{camisolaBean.camisola.margen_ganancia}"  />
-                                    </div>
-
-                                    <div class="group-material">
-                                        <b:inputText id="stocMinimo" style="font: bold small-caps 120%/200% serif;" placeholder="Nombre" value="#{camisolaBean.camisola.stocMinimo}"  />
-                                    </div>
-
-                                    <div class="group-material">
-                                        <b:inputText id="stocActual" style="font: bold small-caps 120%/200% serif;" placeholder="Nombre" value="#{camisolaBean.camisola.stocActual}"  />
-                                    </div>
-
-                                    <div class="group-material">
-                                        <b:inputText id="barra" style="font: bold small-caps 120%/200% serif;" placeholder="Nombre" value="#{camisolaBean.camisola.codBarra}"  />
-                                    </div>
-
-
-
-                                    <!--
-                                    <div class="group-material" style="font: bold small-caps 120%/200% serif;">
-                                        <b:selectOneMenu  value="#{examenBean.ingreso.idCategoriaExamen}">
-                                            <f:selectItems value="#{categoriaExamenBean.lstCategoriaExamenDAO}" var="categoria" itemLabel="#{categoria.nombreCategoria}" itemValue="#{categoria.idCategoriaExamen}" />
-                                        </b:selectOneMenu>
-                                    </div>
-                                    -->
-
-
+                                    
 
                                     <p class="text-center">
-                                        <b:commandButton  class="btn btn-primary zmdi zmdi-floppy" value="Guardar" action="#{camisolaBean.insertar()}"/>
+                                        <b:commandButton  class="btn btn-primary zmdi zmdi-floppy" value="Guardar" action="#{beanVendedor.insertar()}"/>
                                     </p> 
                                 </h:form>
 
