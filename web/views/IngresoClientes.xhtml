@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Registro Enfermedad</title> 
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="Shortcut Icon" type="image/x-icon" href="../resources/assets/icons/book.ico" />
+
+        <script src="../s/sweet-alert.min.js"></script>
+
+        <link rel="stylesheet" href="../resources/css/sweet-alert.css"/>
+        <link rel="stylesheet" href="../resources/css/material-design-iconic-font.min.css"/>
+        <link rel="stylesheet" href="../resources/css/normalize.css"/>
+        <link rel="stylesheet" href="../resources/css/bootstrap.min.css"/>
+
+        <link rel="stylesheet" href="../resources/css/jquery.mCustomScrollbar.css"/>
+        <link rel="stylesheet" href="../resources/css/style.css"/>
+        <script src="../resources/js/modernizr.js"></script>
+        <script src="../resources/js/bootstrap.min.js"></script>
+        <script src="../resources/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script src="../resources/js/main.js"></script>
+    </h:head>
+
+    <h:body>
+        <div class="navbar-lateral full-reset">
+            <div class="visible-xs font-movile-menu mobile-menu-button"></div>
+            <div class="full-reset container-menu-movile custom-scroll-containers">
+                <div class="logo full-reset all-tittles">
+                    <i class="visible-xs zmdi zmdi-close pull-left mobile-menu-button" style="line-height: 55px; cursor: pointer; padding: 0 10px; margin-left: 7px;"></i> 
+                    Sistema Clinica Medica
+                </div>
+                <div class="full-reset" style="background-color:#2B3D51; padding: 10px 0; color:#fff;">
+                    <c:if test="#{controlador.Validador() == 1}">
+                        <figure>
+                            <img src="../resources/imgs/Admin/boss.png" class="img-responsive center-box" style="width:55%;"/>
+                            <p class="text-center" style="padding-top: 15px; font: bold small-caps 120%/200% serif;">Administrador #{controlador.usu.nombre} #{controlador.usu.apellido}</p>
+                        </figure>
+                    </c:if>
+
+                    <c:if test="#{controlador.Validador() == 2}">
+                        <figure>
+                            <img src="../resources/imgs/Doctor/doctor.png" class="img-responsive center-box" style="width:55%;"/>
+                            <p class="text-center" style="padding-top: 15px; font: bold small-caps 120%/200% serif;">Doctor #{controlador.usu.nombre} #{controlador.usu.apellido}</p>
+                        </figure>
+                    </c:if>
+
+                </div>
+                <div class="full-reset nav-lateral-list-menu">
+                    <ul class="list-unstyled">
+
+
+                        <li><a href="../homes/homeDoctor.xhtml" style="font: bold small-caps 120%/200% serif;"><i class="zmdi zmdi-home zmdi-hc-fw"></i>&nbsp;&nbsp; Inicio</a></li>
+
+                        <li>
+                            <div class="dropdown-menu-button" style="font: bold small-caps 120%/200% serif;"><i class="zmdi zmdi-lamp zmdi-hc-fw"></i>&nbsp;&nbsp; Registros <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
+                            <ul class="list-unstyled">
+                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/IngresoEnfermedad.xhtml"><i class="zmdi zmdi-archive zmdi-hc-fw"></i>&nbsp;&nbsp; Nuevo Examen</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li>
+                            <div style="font: bold small-caps 120%/200% serif;" class="dropdown-menu-button"><i class="zmdi zmdi-search zmdi-hc-fw"></i>&nbsp;&nbsp; Busquedas <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
+                            <ul class="list-unstyled">
+                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/VistaMedicamento.xhtml"><i class="zmdi zmdi-hc-fw"></i>&nbsp;&nbsp; Medicamentos</a></li>
+                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/VistaPaciente.xhtml"><i class="zmdi zmdi-hc-fw"></i>&nbsp;&nbsp; Pacientes</a></li>
+                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/VistaHistorialClinico.xhtml"><i class="zmdi zmdi-hc-fw"></i>&nbsp;&nbsp; Historial Clinico</a></li>
+                                <!--                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/VistaExamen.xhtml"><i class="zmdi zmdi-hc-fw"></i>&nbsp;&nbsp; Examenes</a></li>-->
+                                <!--                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/VistaReferenciaClinica.xhtml"><i class="zmdi zmdi-hc-fw"></i>&nbsp;&nbsp; Referencia Clinica</a></li>-->
+                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/VistaEnfermedad.xhtml"><i class="zmdi zmdi-hc-fw"></i>&nbsp;&nbsp; Enfermedades</a></li>
+                                <!--                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/BuscarRevisionGeneral.xhtml"><i class="zmdi zmdi-hc-fw"></i>&nbsp;&nbsp; Revisión General</a></li>-->
+                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/BuscarCita.xhtml"><i class="zmdi zmdi-hc-fw"></i>&nbsp;&nbsp; Citas</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <div style="font: bold small-caps 120%/200% serif;" class="dropdown-menu-button"><i class="zmdi zmdi-refresh zmdi-hc-fw"></i>&nbsp;&nbsp; Modificaciones <i class="zmdi zmdi-chevron-down pull-right zmdi-hc-fw"></i></div>
+                            <ul class="list-unstyled">
+                                <li style="font: bold small-caps 120%/200% serif;"><a href="../faces/Doctor/ModificarCita.xhtml"><i class="zmdi zmdi-hc-fw"></i>&nbsp;&nbsp; Citas</a></li>
+                            </ul>
+                        </li>
+
+
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="content-page-container full-reset custom-scroll-containers">
+            <nav class="navbar-user-top full-reset">
+                <ul class="list-unstyled full-reset">
+                    <figure>
+                        <img src="../resources/assets/img/user01.png" alt="user-picture" class="img-responsive img-circle center-box"/>
+                    </figure>
+                    <li style="color:#fff; cursor:default;">
+                        <span class="all-tittles">#{controlador.usu.nombre} #{controlador.usu.apellido}</span>
+                    </li>
+                    <li  class="tooltips-general exit-system-button" data-href="index.html" data-placement="bottom" title="Salir del sistema">
+                        <i class="zmdi zmdi-power"></i>
+                    </li>
+                    <li  class="tooltips-general search-persona-button" data-placement="bottom" title="Ayuda">
+                        <i class="zmdi zmdi-help-outline zmdi-hc-fw"></i>
+                    </li>
+                    <li class="mobile-menu-button visible-xs" style="float: left !important;">
+                        <i class="zmdi zmdi-menu"></i>
+                    </li>
+                </ul>
+            </nav>
+            <div class="container">
+                <div class="page-header">
+                    <h1 class="all-tittles">Sistema Clinicamedica <small>Administración ingreso de Examenes    </small></h1>
+                </div>
+            </div>
+
+            <div  class="container-fluid"  style="margin: 50px 0;">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4 col-md-3">
+                        <img src="../resources/imgs/Doctor/brain.png" alt="user" class="img-responsive center-box" style="max-width: 110px;"/>
+                    </div>
+                    <div style="font: bold small-caps 120%/200% serif;" class="col-xs-12 col-sm-8 col-md-8 text-justify lead" >
+                        Bienvenido a la sección Ingreso de Examenes del sistema, debes de llenar todos los campos del siguiente formulario para registrar un nuevo Examen
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xs-12 lead">
+                        <ol class="breadcrumb">
+                            <li class="active">Ingreso Camisola</li>
+                            <li><a href="modificar/ModificarCliente.xhtml">Listado Clientes</a></li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div  class="container-fluid">
+                <div class="container-flat-form">
+                    <div class="title-flat-form title-flat-blue">Registrar un nuevo Examen</div>
+                    <form autocomplete="off">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-8 col-sm-offset-2">
+
+
+
+                                <h:form>
+
+                                    <div class="group-material">
+                                        <b:inputText id="nombre" style="font: bold small-caps 120%/200% serif;" placeholder="Nombre" value="#{clienteBean.ingreso.nombres}" />
+                                    </div>
+                                    
+                                    <div class="group-material">
+                                        <b:inputText id="talla" style="font: bold small-caps 120%/200% serif;" placeholder="Apellido" value="#{clienteBean.ingreso.apellidos}"  />
+                                    </div>
+
+                                    <div class="group-material">
+                                        <b:inputText id="precioVenta" style="font: bold small-caps 120%/200% serif;" placeholder="direccion" value="#{clienteBean.ingreso.direccion}"  />
+                                    </div>
+
+                                    <div class="group-material">
+                                        <b:inputText id="precioCosto" style="font: bold small-caps 120%/200% serif;" placeholder="No. rut" value="#{clienteBean.ingreso.no_rut}"  />
+                                    </div>
+
+                                    <div class="group-material">
+                                        <b:inputText id="margen" style="font: bold small-caps 120%/200% serif;" placeholder="correo" value="#{clienteBean.ingreso.email}"  />
+                                    </div>
+
+                                    <div class="group-material">
+                                        <b:inputText id="stocMinimo" style="font: bold small-caps 120%/200% serif;" placeholder="claro" value="#{clienteBean.ingreso.telefono_claro}"  />
+                                    </div>
+
+                                    <div class="group-material">
+                                        <b:inputText id="stocActual" style="font: bold small-caps 120%/200% serif;" placeholder="movistar" value="#{clienteBean.ingreso.telefono_movistar}"  />
+                                    </div>
+
+                                    
+
+
+
+
+                                    <p class="text-center">
+                                        <b:commandButton  class="btn btn-primary zmdi zmdi-floppy" value="Guardar" action="#{clienteBean.insertar()}"/>
+                                    </p> 
+                                </h:form>
+
+
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+
+            <footer class="footer full-reset">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <h4 class="all-tittles">Acerca de</h4>
+                            <p>
+                                Systema basado y desarrollado completamente en java 
+                            </p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <h4 class="all-tittles">Desarrolladores</h4>
+                            <ul class="list-unstyled">
+                                <li><i class="zmdi zmdi-check zmdi-hc-fw"></i>&nbsp; Evelyn Juarez</li>
+                                <li><i class="zmdi zmdi-check zmdi-hc-fw"></i>&nbsp; Harvey Herrera</li>
+                                <li><i class="zmdi zmdi-check zmdi-hc-fw"></i>&nbsp; Erick Osoy </li>
+                                <li><i class="zmdi zmdi-check zmdi-hc-fw"></i>&nbsp; Daniel Galindo </li>
+                                <li><i class="zmdi zmdi-check zmdi-hc-fw"></i>&nbsp; Carlos Coronado </li>
+                                <li><i class="zmdi zmdi-check zmdi-hc-fw"></i>&nbsp; Kevin Mazariegos</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-copyright full-reset all-tittles">© 2017 Intecap Zona 4 Centro Tics</div>
+            </footer>
+        </div>
+    </h:body>
+</html>
+

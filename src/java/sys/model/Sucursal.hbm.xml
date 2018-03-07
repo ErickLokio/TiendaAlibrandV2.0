@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/03/2018 03:34:36 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="sys.model.Sucursal" table="sucursal" catalog="tienda_alibrand_final" optimistic-lock="version">
+        <id name="idSucursal" type="int">
+            <column name="id_sucursal" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="vendedor" class="sys.model.Vendedor" fetch="select">
+            <column name="id_empleado" not-null="true" />
+        </many-to-one>
+        <property name="direccion" type="string">
+            <column name="direccion" length="100" not-null="true" />
+        </property>
+        <property name="nombreSucursal" type="int">
+            <column name="nombre_sucursal" not-null="true" />
+        </property>
+        <property name="telClaro" type="int">
+            <column name="tel_claro" not-null="true" />
+        </property>
+        <property name="telMovistar" type="int">
+            <column name="tel_movistar" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="100" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

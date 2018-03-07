@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/03/2018 03:34:36 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="sys.model.Producto" table="producto" catalog="tienda_alibrand_final" optimistic-lock="version">
+        <id name="codProducto" type="java.lang.Integer">
+            <column name="codProducto" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="tallaBalonBasket" class="sys.model.TallaBalonBasket" fetch="select">
+            <column name="id_talla_balon_basket" />
+        </many-to-one>
+        <many-to-one name="tallaBalonFoot" class="sys.model.TallaBalonFoot" fetch="select">
+            <column name="id_talla_balon_foot" />
+        </many-to-one>
+        <many-to-one name="tallaCamisola" class="sys.model.TallaCamisola" fetch="select">
+            <column name="id_talla_camisola" />
+        </many-to-one>
+        <many-to-one name="tallaChumpa" class="sys.model.TallaChumpa" fetch="select">
+            <column name="id_talla_chumpa" />
+        </many-to-one>
+        <many-to-one name="tallaEspinillera" class="sys.model.TallaEspinillera" fetch="select">
+            <column name="id_talla_espinillera" />
+        </many-to-one>
+        <many-to-one name="tallaLicra" class="sys.model.TallaLicra" fetch="select">
+            <column name="id_talla_licra" />
+        </many-to-one>
+        <many-to-one name="tallaPantaloneta" class="sys.model.TallaPantaloneta" fetch="select">
+            <column name="id_talla_pantaloneta" />
+        </many-to-one>
+        <many-to-one name="tallaPescador" class="sys.model.TallaPescador" fetch="select">
+            <column name="id_talla_pescador" />
+        </many-to-one>
+        <many-to-one name="tallaZapatilla" class="sys.model.TallaZapatilla" fetch="select">
+            <column name="id_talla_zapatilla" />
+        </many-to-one>
+        <many-to-one name="tipoZapatilla" class="sys.model.TipoZapatilla" fetch="select">
+            <column name="id_tipo_zapatilla" />
+        </many-to-one>
+        <property name="nombreProducto" type="string">
+            <column name="nombreProducto" length="75" not-null="true" />
+        </property>
+        <property name="precioVenta" type="long">
+            <column name="precioVenta" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="precioCosto" type="long">
+            <column name="precio_costo" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="margenGanancia" type="long">
+            <column name="margen_ganancia" precision="10" scale="0" not-null="true" />
+        </property>
+        <property name="stocMinimo" type="int">
+            <column name="stocMinimo" not-null="true" />
+        </property>
+        <property name="stocActual" type="int">
+            <column name="stocActual" not-null="true" />
+        </property>
+        <property name="codBarra" type="string">
+            <column name="codBarra" length="50" not-null="true" />
+        </property>
+        <set name="detallefacturas" table="detallefactura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codProducto" not-null="true" />
+            </key>
+            <one-to-many class="sys.model.Detallefactura" />
+        </set>
+        <set name="detalleCotizacions" table="detalle_cotizacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_producto" not-null="true" />
+            </key>
+            <one-to-many class="sys.model.DetalleCotizacion" />
+        </set>
+    </class>
+</hibernate-mapping>

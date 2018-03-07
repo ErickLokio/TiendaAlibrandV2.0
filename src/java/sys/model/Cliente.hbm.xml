@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/03/2018 03:34:36 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="sys.model.Cliente" table="cliente" catalog="tienda_alibrand_final" optimistic-lock="version">
+        <id name="codCliente" type="java.lang.Integer">
+            <column name="codCliente" />
+            <generator class="identity" />
+        </id>
+        <property name="nombres" type="string">
+            <column name="nombres" length="40" not-null="true" />
+        </property>
+        <property name="apellidos" type="string">
+            <column name="apellidos" length="40" not-null="true" />
+        </property>
+        <property name="direccion" type="string">
+            <column name="direccion" length="150" not-null="true" />
+        </property>
+        <property name="noRut" type="string">
+            <column name="no_rut" length="18" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="email" length="75" not-null="true" />
+        </property>
+        <property name="telefonoClaro" type="int">
+            <column name="telefono_claro" not-null="true" />
+        </property>
+        <property name="telefonoMovistar" type="int">
+            <column name="telefono_movistar" not-null="true" />
+        </property>
+        <set name="facturas" table="factura" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="codCliente" not-null="true" />
+            </key>
+            <one-to-many class="sys.model.Factura" />
+        </set>
+    </class>
+</hibernate-mapping>

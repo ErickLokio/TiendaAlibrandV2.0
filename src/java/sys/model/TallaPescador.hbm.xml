@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/03/2018 03:34:36 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="sys.model.TallaPescador" table="talla_pescador" catalog="tienda_alibrand_final" optimistic-lock="version">
+        <id name="idTallaPescador" type="int">
+            <column name="id_talla_pescador" />
+            <generator class="assigned" />
+        </id>
+        <property name="nombreTallaPescador" type="string">
+            <column name="nombre_talla_pescador" length="110" not-null="true" />
+        </property>
+        <set name="productos" table="producto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_talla_pescador" />
+            </key>
+            <one-to-many class="sys.model.Producto" />
+        </set>
+    </class>
+</hibernate-mapping>

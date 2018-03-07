@@ -1,0 +1,164 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <p:commandButton value="Nuevo Cliente" actionListener="#{clienteBean.prepararNuevoCliente()}"
+                             oncomplete="PF('dialogNuevoCliente').show();" update=":formNuevoCliente" />
+        </h:form>
+        <br/>
+
+        <h:form id="formMostrarClientes">
+            <p:dataTable id="tablaClientes" paginator="true" paginatorPosition="top"
+                         var="ct" value="#{clienteBean.listaClientes}"
+                         emptyMessage="No hay Datos de Clientes" >
+
+                <p:column headerText="Código" >
+                    <h:outputText value="#{ct.codCliente}" />
+                </p:column>
+
+                <p:column headerText="Nombre" >
+                    <h:outputText value="#{ct.nombres} #{ct.apellidos}" />
+                </p:column>
+
+                <p:column headerText="Dirección" >
+                    <h:outputText value="#{ct.direccion}" />
+                </p:column>
+                
+                <p:column headerText="Claro" >
+                    <h:outputText value="#{ct.telefonoClaro}" />
+                </p:column>
+                
+                <p:column headerText="Movistar" >
+                    <h:outputText value="#{ct.telefonoMovistar}" />
+                </p:column>
+                
+                 <p:column headerText="Rut" >
+                    <h:outputText value="#{ct.noRut}" />
+                </p:column>
+                
+                 <p:column headerText="Email" >
+                    <h:outputText value="#{ct.email}" />
+                </p:column>
+
+                <p:column headerText="Modificar" >
+                    <p:commandButton value="modificar" oncomplete="PF('dialogModificarCliente').show();"
+                                     update=":formModificarCliente" >
+
+                        <f:setPropertyActionListener target="#{clienteBean.cliente}" value="#{ct}" />
+                    </p:commandButton>
+                </p:column>
+
+                <p:column headerText="Eliminar" >
+                    <p:commandButton value="Eliminar" oncomplete="PF('dialogEliminarCliente').show();" 
+                                     update=":formEliminarCliente" >
+
+                        <f:setPropertyActionListener target="#{clienteBean.cliente}" value="#{ct}" />
+                    </p:commandButton>
+                </p:column>
+
+            </p:dataTable>
+        </h:form>
+
+        <h:form id="formNuevoCliente">
+            <p:dialog id="dlgNuevoCliente" widgetVar="dialogNuevoCliente" resizable="false" 
+                      showEffect="explode" hideEffect="explode" modal="true" >
+
+                <p:panelGrid columns="2" style="margin: 0 auto">
+                    <p:outputLabel value="Nombre" />
+                    <p:inputText value="#{clienteBean.cliente.nombres}" />
+
+                    <p:outputLabel value="Apellido" />
+                    <p:inputText value="#{clienteBean.cliente.apellidos}" />
+
+                    <p:outputLabel value="Dirección" />
+                    <p:inputText value="#{clienteBean.cliente.direccion}" />
+                    
+                    <p:outputLabel value="No.rut" />
+                    <p:inputText value="#{clienteBean.cliente.noRut}" />
+                    
+                    <p:outputLabel value="E-mail" />
+                    <p:inputText value="#{clienteBean.cliente.email}" />
+                    
+                    <p:outputLabel value="Tel.Claro" />
+                    <p:inputText value="#{clienteBean.cliente.telefonoClaro}" />
+                    
+                    <p:outputLabel value="Tel.Movistar" />
+                    <p:inputText value="#{clienteBean.cliente.telefonoMovistar}" />
+                    
+                </p:panelGrid>
+
+                <p:commandButton value="Guardar" actionListener="#{clienteBean.nuevoCliente()}"
+                                 update=":formMostrarClientes:tablaClientes" 
+                                 oncomplete="PF('dialogNuevoCliente').hide();" />
+
+                <p:commandButton value="Cancelar" oncomplete="PF('dialogNuevoCliente').hide();" />
+
+            </p:dialog>
+
+        </h:form>
+
+
+        <h:form id="formModificarCliente">
+            <p:dialog id="dlgModificarCliente" widgetVar="dialogModificarCliente" resizable="false" 
+                      showEffect="explode" hideEffect="explode" modal="true" >
+
+                <p:panelGrid columns="2" style="margin: 0 auto">
+                    <p:outputLabel value="Nombre" />
+                    <p:inputText value="#{clienteBean.cliente.nombres}" />
+
+                    <p:outputLabel value="Apellido" />
+                    <p:inputText value="#{clienteBean.cliente.apellidos}" />
+
+                    <p:outputLabel value="Dirección" />
+                    <p:inputText value="#{clienteBean.cliente.direccion}" />
+                    
+                    <p:outputLabel value="No.rut" />
+                    <p:inputText value="#{clienteBean.cliente.noRut}" />
+                    
+                    <p:outputLabel value="E-mail" />
+                    <p:inputText value="#{clienteBean.cliente.email}" />
+                    
+                    <p:outputLabel value="Tel.Claro" />
+                    <p:inputText value="#{clienteBean.cliente.telefonoClaro}" />
+                    
+                    <p:outputLabel value="Tel.Movistar" />
+                    <p:inputText value="#{clienteBean.cliente.telefonoMovistar}" />
+                    
+                </p:panelGrid>
+
+                <p:commandButton value="Modificar" actionListener="#{clienteBean.modificarCliente()}"
+                                 update=":formMostrarClientes:tablaClientes" 
+                                 oncomplete="PF('dialogModificarCliente').hide();" />
+
+                <p:commandButton value="Cancelar" oncomplete="PF('dialogModificarCliente').hide();" />
+
+            </p:dialog>
+
+        </h:form>
+
+
+        <h:form id="formEliminarCliente">
+            <p:dialog id="dlgEliminarCliente" widgetVar="dialogEliminarCliente" resizable="false" 
+                      showEffect="explode" hideEffect="explode" modal="true" >
+
+                <h:outputText value="¿Desea Eliminar este Registro?" />
+                <br/>
+                <p:commandButton value="Si" actionListener="#{clienteBean.eliminarCliente()}"
+                                 update=":formMostrarClientes:tablaClientes" 
+                                 oncomplete="PF('dialogEliminarCliente').hide();" />
+
+                <p:commandButton value="No" oncomplete="PF('dialogEliminarCliente').hide();" />
+
+            </p:dialog>
+
+        </h:form>
+    </h:body>
+</html>
+

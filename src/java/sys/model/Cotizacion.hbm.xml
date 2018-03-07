@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 5/03/2018 03:34:36 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="sys.model.Cotizacion" table="cotizacion" catalog="tienda_alibrand_final" optimistic-lock="version">
+        <id name="idCotizacion" type="int">
+            <column name="id_cotizacion" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="vendedorByIdEmpleado" class="sys.model.Vendedor" fetch="select">
+            <column name="id_empleado" not-null="true" />
+        </many-to-one>
+        <many-to-one name="vendedorByIdCliente" class="sys.model.Vendedor" fetch="select">
+            <column name="id_cliente" not-null="true" />
+        </many-to-one>
+        <property name="fecha" type="timestamp">
+            <column name="fecha" length="19" not-null="true" />
+        </property>
+        <property name="granTotal" type="long">
+            <column name="gran_total" precision="10" scale="0" not-null="true" />
+        </property>
+        <set name="detalleCotizacions" table="detalle_cotizacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="id_cotizacion" not-null="true" />
+            </key>
+            <one-to-many class="sys.model.DetalleCotizacion" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd">
+<hibernate-reverse-engineering>
+  <schema-selection match-catalog="tienda_alibrand_final"/>
+  <table-filter match-name="factura"/>
+  <table-filter match-name="talla_pantaloneta"/>
+  <table-filter match-name="cliente"/>
+  <table-filter match-name="talla_balon_foot"/>
+  <table-filter match-name="producto"/>
+  <table-filter match-name="talla_balon_basket"/>
+  <table-filter match-name="talla_camisola"/>
+  <table-filter match-name="detallefactura"/>
+  <table-filter match-name="vendedor"/>
+  <table-filter match-name="talla_chumpa"/>
+  <table-filter match-name="tipo_zapatilla"/>
+  <table-filter match-name="sucursal"/>
+  <table-filter match-name="talla_zapatilla"/>
+  <table-filter match-name="talla_licra"/>
+  <table-filter match-name="cotizacion"/>
+  <table-filter match-name="usuario"/>
+  <table-filter match-name="talla_espinillera"/>
+  <table-filter match-name="detalle_cotizacion"/>
+  <table-filter match-name="talla_pescador"/>
+</hibernate-reverse-engineering>
